@@ -1,9 +1,18 @@
 //Onde definimos os serviços que usaremos na aplicação, onde a aplicação é iniciada, dependências que ela necessita, etc.
+using FilmesAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+//variavel de conexão com banco
+var connectionString = builder.Configuration.GetConnectionString("FilmeConnection");
 
 // Add services to the container.
-
-builder.Services.AddControllers();
+//Fazendo comunicação com o banco pegando a String de conexão em appsettings.json
+builder.Services.AddDbContext<FilmeContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+//Adicionando AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//Adicionando newtonsoft para manipular JSON parao metodo PATCH
+builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
