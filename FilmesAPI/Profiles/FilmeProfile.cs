@@ -13,9 +13,7 @@ public class FilmeProfile : Profile
         //Devemos dar as permissões para que ele atue.
         CreateMap<CreateFilmeDto, Filme>();
         CreateMap<UpdateFilmeDto, Filme>();
-        //Para o Metodo Patch, devemos permitir que o mapper converta de filme para UpdateFilme
         CreateMap<Filme, UpdateFilmeDto>();
-        //Para leitura dos dados
         CreateMap<Filme, ReadFilmeDto>();
     }
 }

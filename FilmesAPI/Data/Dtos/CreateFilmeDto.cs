@@ -9,7 +9,6 @@ public class CreateFilmeDto
     [Required(ErrorMessage = "O Título do Filme é obrigatório")]
     public string Titulo { get; set; }
     [Required(ErrorMessage = "O Gênero do Filme é obrigatório")]
-    //StringLength é mais aconselhado do que MaxLength. Tem a mesma função porém não aloca espaço de memória no banco de dados
     [StringLength(50, ErrorMessage = "O tamanho do Gênero não pode exceder 50 caracteres")]
     public string Genero { get; set; }
     [Required(ErrorMessage = "A Duração do Filme é obrigatória")]
