@@ -1,12 +1,12 @@
-﻿//Arquivo contendo modelo de objeto Filme para inserirmos no banco
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FilmesAPI.Models;
 
 public class Filme
 {
+    [Key]
+    [Required]
     public int Id { get; set; }
-    //Utilizando Data Annotations do C# para fazer validação dos campos dos dados
     [Required(ErrorMessage = "O Título do Filme é obrigatório")]
     public string Titulo { get; set; }
     [Required(ErrorMessage = "O Gênero do Filme é obrigatório")]
