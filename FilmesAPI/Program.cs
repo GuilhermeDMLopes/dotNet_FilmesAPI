@@ -10,7 +10,8 @@ var connectionString = builder.Configuration.GetConnectionString("FilmeConnectio
 
 // Add services to the container.
 //Fazendo comunicação com o banco pegando a String de conexão em appsettings.json
-builder.Services.AddDbContext<FilmeContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+//Para carregar as instancias que possuem relacionamentos (Ex: Cinema e Endereços), precisamos adicionar UseLazyLoadingProperties
+builder.Services.AddDbContext<FilmeContext>(options => options.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 //Adicionando AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //Adicionando newtonsoft para manipular JSON parao metodo PATCH
