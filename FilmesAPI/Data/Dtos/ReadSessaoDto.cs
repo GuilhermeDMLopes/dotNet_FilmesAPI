@@ -2,5 +2,7 @@
 
 public class ReadSessaoDto
 {
-    public int Id { get; set; }
+    //Iremos exibir o filmeid e o cinemaid
+    public int FilmeId { get; set; }
+    public int CinemaId { get; set; }
 }
