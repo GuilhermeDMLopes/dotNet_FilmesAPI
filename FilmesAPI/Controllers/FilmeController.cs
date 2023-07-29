@@ -42,7 +42,9 @@ public class FilmeController : ControllerBase
     [HttpGet]
     public IEnumerable<ReadFilmeDto> RecuperaFilmes( [FromQuery] int skip = 0, [FromQuery] int take = 50)
     {
-        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.Skip(skip).Take(take));
+        //Quando fazemos o relacionamento 1:n de filme com sessoes, se não retornarmos uma lista, ele nos gera um erro.
+        //_context retorna um queryable. Para resolver o problema, adicionamos um toList() no final
+        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.Skip(skip).Take(take).ToList());
     }
 
 
