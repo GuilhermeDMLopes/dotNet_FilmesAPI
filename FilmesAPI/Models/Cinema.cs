@@ -16,4 +16,6 @@ public class Cinema
     //No momento em que formos cadastrar um cinema, o endereço ja deve existir
     //Quando eu instanciar um novo cinema, tambem preciso instanciar o endereço de forma sincronizada. Para isso utilizamos a Lib MicrosoftEntityFrameWorkCore.Proxies (Na mesma versão da aplicação)
     public virtual Endereco Endereco { get; set; }
+    //Fazendo relacionamento tipo 1:n com Sessões
+    public virtual ICollection<Sessao> Sessoes { get; set; }
 }
